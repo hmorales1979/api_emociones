@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# libs nativas mínimas para opencv/matplotlib
+# libs nativas necesarias para opencv/matplotlib
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1 libglib2.0-0 && \
     rm -rf /var/lib/apt/lists/*
@@ -14,11 +14,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /app
 
 COPY requirements.txt /app/
-# primero actualizamos pip/setuptools/wheel para evitar conflictos
 RUN python -m pip install --upgrade pip setuptools wheel \
  && pip install -r requirements.txt
 
-# copia código y modelo
+# código y modelo
 COPY server.py /app/
 COPY modelo_emociones.h5 /app/
 
