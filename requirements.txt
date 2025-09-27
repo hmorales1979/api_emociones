@@ -1,8 +1,17 @@
-fastapi==0.115.0
-uvicorn==0.30.6
+# framework api
+fastapi==0.103.2
+uvicorn==0.23.2
+python-multipart==0.0.6
+
+# deep learning (CPU)
 tensorflow-cpu==2.13.1
-numpy==1.24.4
-pillow==10.4.0
-opencv-python-headless==4.10.0.84
-matplotlib==3.9.2
-python-multipart==0.0.12
+
+# dependencias numéricas compatibles con tf 2.13
+numpy==1.24.3
+pillow==10.2.0
+
+# opencv sin GUI (para servidores)
+opencv-python-headless==4.8.1.78
+
+# matplotlib compatible con numpy 1.24.x
+matplotlib==3.7.3
